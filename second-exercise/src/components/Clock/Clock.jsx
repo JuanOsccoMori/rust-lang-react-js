@@ -12,29 +12,27 @@ const Clock = () => {
 
     useEffect(() =>{
         const timerId = setInterval(
-            () => tick(), 1000
+            () => tick(), 2000
         );
-        clearInterval(timerId)
-    },[state])
+        return () => {
+            clearInterval(timerId)
+        };
+    });
 
     const tick = () => {
-            setState((prevState) => {
-                let age = prevState.age + 1;
-                return {
-                    ...prevState,
-                    date: new Date(),
-                    age
-                }
-            })
-        }
+        return setState({
+            date: state.date,
+            age: state.age + 1,
+            name: state.name,
+            last_name: state.last_name,
+        });
+    }
     return (
         <div>
             <h5>Hora Actual: {state.date.toLocaleTimeString()}</h5>
             <p>Nombre : {state.name} </p>
             <p>apellidos : {state.last_name} </p>
             <p>edad: {state.age} </p>
-
-            <button onClick={tick}>tick</button>
         </div>
     );
 }
