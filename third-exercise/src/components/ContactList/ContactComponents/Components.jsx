@@ -7,9 +7,9 @@ const ComponentsContact = ({ contact, remove, state }) => {
 
     const contactStatus = () => {
         return contact.connected ? 
-        (<button onClick={() => state(contact)}>{contact.connected ? 'Disconnected' : 'Connected'}</button>) 
+        (<input type="button" onClick={() => state(contact)} value={contact.connected ? 'Disconnected' : 'Connected'} />)
         :
-        (<button onClick={() => (state(contact))}>{contact.connected ? 'Disconnected' : 'Connected'}</button>)
+        (<input type="button" onClick={() => state(contact)} value={contact.connected ? 'Disconnected' : 'Connected'} />)
     }
 
     useEffect(() => {
@@ -28,6 +28,7 @@ const ComponentsContact = ({ contact, remove, state }) => {
                 <button onClick={() => remove(contact)}>Remove</button>
                 {contactStatus()}
             </td>
+            
         </tr>         
     );
 }

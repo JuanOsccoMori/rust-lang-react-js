@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { func } from "prop-types";
 import { ModelContact } from '../../models/ModelContact';
-import { useRef } from 'react';
 
 const FormContact = ({ add }) => {
 
@@ -15,7 +14,7 @@ const FormContact = ({ add }) => {
             nameRef.current.value,
             lastNameRef.current.value,
             emailRef.current.value,
-            false
+            true
         );
         add(newContact);
     }
